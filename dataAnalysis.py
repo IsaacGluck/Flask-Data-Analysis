@@ -39,7 +39,7 @@ def analyzeData():
     while line:
         dataTable += '<tr>'
         for i in line.split(','):
-            dataTable += ('<td bgcolor = "#EBB6FA">' + str(i) + '</td>')
+            dataTable += ('<td>' + str(i) + '</td>')
             dataTable += '</tr>'
             dataTable += w.readline()
             w.close()
