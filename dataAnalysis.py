@@ -13,8 +13,8 @@ def makeData():
 
 def analyzeData():
     dataTable = ''
-    k = open('data/data1.csv', 'r')
-    f = open('data/data2.csv', 'w')
+    k = open('data/data.csv', 'r')
+    f = open('data/data.csv', 'w')
     L = []
     L2 = []
     L3 = []
@@ -34,14 +34,14 @@ def analyzeData():
         f.write(Lyear[i-1] + '-' + Lyear[i] + ',' + str(int(L[i]) - int(L[i-1])) + '\n')
         f.close()
 
-    w = open('data2.csv', 'r')
+    w = open('data/data.csv', 'r')
     line = w.readline()
     while line:
         dataTable += '<tr>'
         for i in line.split(','):
             dataTable += ('<td bgcolor = "#EBB6FA">' + str(i) + '</td>')
             dataTable += '</tr>'
-            dataTable += = w.readline()
+            dataTable += w.readline()
             w.close()
 
     L2 = L2[1:]
