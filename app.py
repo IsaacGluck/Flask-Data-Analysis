@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from name import nameInput
 
 # app is an instance of the Flask class
 app = Flask(__name__)
@@ -6,7 +7,8 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/data")
 def data():
-    return render_template("data.html")
+    name = nameInput()
+    return render_template("data.html", name = name)
     
 @app.route("/analysis")
 def analysis():
