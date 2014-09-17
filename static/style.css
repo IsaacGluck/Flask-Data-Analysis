@@ -48,6 +48,13 @@ a:active {
 	color: white;
 }
 
+a:visited {
+	padding: 4px;
+	color: white;
+	background-color: hsla(359, 0%, 66%, 0.63);
+	text-decoration: none;
+}
+
 .container {
 	width: 60%;
 	margin: 0 auto;
