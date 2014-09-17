@@ -17,9 +17,12 @@ def login():
         if button=="cancel":
             return render_template("login.html")
         else:
+            authenticate.register(name, password)
             if authenticate.authentic(name, password) == "NP":
+                print "NP"
                 return render_template("login.html")
             if authenticate.authentic(name, password) == "NR":
+                print "NR"
                 return render_template("login.html")
             return render_template("data.html", name = name)
 
