@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import authenticate
 
 # app is an instance of the Flask class
 app = Flask(__name__)
@@ -10,15 +11,21 @@ def login():
         return render_template("login.html")
     else:
         button = request.form['b']
+        global name
         name = request.form['name']
+        password = request.form['password']
         if button=="cancel":
             return render_template("login.html")
         else:
+            if authenticate.authentic(name, password) == "NP":
+                return render_template("login.html")
+            if authenticate.authentic(name, password) == "NR":
+                return render_template("login.html")
             return render_template("data.html", name = name)
 
 @app.route("/data")
 def data():
-    return render_template("data.html", name = "Z")
+    return render_template("data.html", name = name)
     
 @app.route("/analysis")
 def analysis():
