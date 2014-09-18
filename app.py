@@ -17,7 +17,7 @@ def login():
         if button=="cancel":
             return render_template("login.html")
         else:
-            if authenticate.authentic(name):
+            if authenticate.authentic(name, password):
                 return render_template("data.html", name = name, dataList = dataHelper())
             return render_template("login.html")
 
