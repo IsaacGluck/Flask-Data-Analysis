@@ -14,12 +14,11 @@ def login():
         global name
         name = request.form['name']
         password = request.form['password']
-        if button=="cancel":
-            return render_template("login.html")
-        else:
+        if button=="Login":
             if authenticate.authentic(name, password):
                 return render_template("data.html", name = name, dataList = dataHelper())
-            return render_template("login.html")
+            else:
+                return render_template("login.html")
 
 
 def dataHelper():
