@@ -44,9 +44,7 @@ def data():
 
 
 
-
-@app.route("/analysis")
-def analysis():
+def analysisHelper():
     t = open('data/data2.csv', 'r')
     analysisList = [];
     line = t.readline()
@@ -59,7 +57,11 @@ def analysis():
         analysisList.append(tmpList)
         line = t.readline()
     t.close()
-    return render_template("analysis.html", analysisList = analysisList)
+    return analysisList
+
+@app.route("/analysis")
+def analysis():
+    return render_template("analysis.html", analysisList = analysisHelper())
 
 
 if __name__ == "__main__":
