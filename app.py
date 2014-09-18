@@ -18,14 +18,11 @@ def login():
             return render_template("login.html")
         else:
             if authenticate.authentic(name):
-                return render_template("data.html", name = name)
+                return render_template("data.html", name = name, dataList = dataHelper())
             return render_template("login.html")
 
 
-
-
-@app.route("/data")
-def data():
+def dataHelper():
     f = open('data/data.csv', 'r')
     dataList = [];
     line = f.readline()
@@ -38,7 +35,12 @@ def data():
         dataList.append(tmpList)
         line = f.readline()
     f.close()
-    return render_template("data.html", dataList = dataList, name = name)
+    return dataList
+
+
+@app.route("/data")
+def data():
+    return render_template("data.html", dataList = dataHelper(), name = name)
 
 
 
