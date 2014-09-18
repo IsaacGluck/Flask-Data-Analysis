@@ -21,13 +21,39 @@ def login():
                 return render_template("data.html", name = name)
             return render_template("login.html")
 
+
+f = open('data/data.csv', 'r')
+
 @app.route("/data")
 def data():
-    return render_template("data.html", name = name)
-    
+    dataList = [];
+    line = f.readline()
+    while line:
+        tmpList = []
+
+        for i in line.split(','):
+            tmpList.append(str(i))
+
+        dataList.append(tmpList)
+        line = f.readline()
+    return render_template("data.html", dataList = dataList, name = name)
+f.close()
+
+t = open('data/data2.csv', 'r')
+
 @app.route("/analysis")
 def analysis():
-    return render_template("analysis.html")
+    dataList = [];
+    line = t.readline()
+    while line:
+        tmpList = []
+
+        for i in line.split(','):
+            tmpList.append(str(i))
+
+        dataList.append(tmpList)
+        line = t.readline()
+    return render_template("analysis.html", dataList = dataList)
 
 if __name__ == "__main__":
     app.run(debug=True)
