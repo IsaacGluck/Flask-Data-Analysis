@@ -7,9 +7,9 @@ app = Flask(__name__)
 @app.route("/",methods=["GET","POST"])
 @app.route("/login",methods=["GET","POST"])
 def login():
-    message = None
+    message = ""
     if request.method=="GET":
-        return render_template("login.html", error = message)
+        return render_template("login.html", message = message)
     else:
         button = request.form['b']
         global name
