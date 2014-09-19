@@ -7,8 +7,9 @@ app = Flask(__name__)
 @app.route("/",methods=["GET","POST"])
 @app.route("/login",methods=["GET","POST"])
 def login():
+    message = None
     if request.method=="GET":
-        return render_template("login.html")
+        return render_template("login.html", error = message)
     else:
         button = request.form['b']
         global name
@@ -18,7 +19,8 @@ def login():
             if authenticate.authentic(name, password):
                 return render_template("data.html", name = name, dataList = dataHelper())
             else:
-                return render_template("login.html")
+                message = "Username and password did not match. Please try again."
+                return render_template("login.html", message = message)
 
 
 def dataHelper():
