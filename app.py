@@ -19,12 +19,21 @@ def login():
             if authenticate.authentic(name, password):
                 return render_template("data.html", name = name, dataList = dataHelper())
             else:
-                message = "Username and password did not match. Please try again."
+                message = "Username and password did not match our records. Please try again."
                 return render_template("login.html", message = message)
+
 
 @app.route("/stuycs")
 def stuycs():
     return redirect("http://www.stuycs.org")
+
+@app.route("/enschool")
+def enschool():
+    return redirect("http://stuy.enschool.org/")
+
+@app.route("/tools")
+def tools():
+    return redirect("https://students-stuyhs.theschoolsystem.net/login.rb")
 
 @app.route("/google")
 def google():
@@ -37,6 +46,7 @@ def facebook():
 @app.route("/whitehouse")
 def whitehouse():
     return redirect("http://www.whitehouse.gov")
+
 
 def dataHelper():
     f = open('data/data.csv', 'r')
