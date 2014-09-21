@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import authenticate
 
 # app is an instance of the Flask class
@@ -22,6 +22,21 @@ def login():
                 message = "Username and password did not match. Please try again."
                 return render_template("login.html", message = message)
 
+@app.route("/stuycs")
+def stuycs():
+    return redirect("http://www.stuycs.org")
+
+@app.route("/google")
+def google():
+    return redirect("http://www.google.com")
+
+@app.route("/facebook")
+def facebook():
+    return redirect("http://www.facebook.com")
+
+@app.route("/whitehouse")
+def whitehouse():
+    return redirect("http://www.whitehouse.gov")
 
 def dataHelper():
     f = open('data/data.csv', 'r')
